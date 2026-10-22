@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShoeZone | Find Your Perfect Fit</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="script.js">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --dark: #151515;
+      --muted: #666;
+      --light: #f5f5f3;
+      --accent: #e7b84b;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* Navigation */
+
+    .navbar {
+      min-height: 76px;
+      padding: 16px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #b88a27;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #b88a27;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .icon-button {
+      border: none;
+      background: transparent;
+      font-size: 21px;
+    }
+
+    .cart-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: white;
+      font-size: 12px;
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 440px;
+      padding: 64px 7%;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(245, 244, 239, 0.98) 0%,
+          rgba(245, 244, 239, 0.90) 42%,
+          rgba(245, 244, 239, 0.05) 100%
+        ),
+        url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1800&q=85")
+        center 55% / cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 540px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #8d6b25;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: #555;
+      font-size: 16px;
+      margin-bottom: 27px;
+      max-width: 420px;
+    }
+
+    .primary-button {
+      display: inline-block;
+      padding: 13px 25px;
+      background: var(--dark);
+      color: white;
+      border: 1px solid var(--dark);
+      border-radius: 30px;
+      transition: all 0.25s ease;
+    }
+
+    .primary-button:hover {
+      background: #b88a27;
+      border-color: #b88a27;
+      transform: translateY(-2px);
+    }
+
+    /* Shopping benefits */
+
+    .benefits {
+      padding: 27px 7%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .benefit {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .benefit-icon {
+      font-size: 25px;
+    }
+
+    .benefit h3 {
+      font-size: 14px;
+    }
+
+    .benefit p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Products */
+
+    .products-section {
+      padding: 55px 7% 70px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 26px;
+      gap: 20px;
+    }
+
+    .section-heading h2 {
+      font-size: 31px;
+      letter-spacing: -1px;
+    }
+
+    .section-heading a {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .product-card {
+      min-width: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #eee;
+      background: white;
+      transition: transform 0.25s ease,
+                  box-shadow 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-image {
+      position: relative;
+      background: #f6f6f4;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      aspect-ratio: 1 / 0.85;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .product-info {
+      padding: 16px;
+    }
+
+    .product-info h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .category {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 9px;
+    }
+
+    .rating {
+      color: #d49a22;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .rating span {
+      color: #777;
+      font-size: 11px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .price {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .add-cart {
+      border: none;
+      background: var(--dark);
+      color: white;
+      padding: 9px 13px;
+      border-radius: 22px;
+      font-size: 12px;
+      transition: background 0.2s ease;
+    }
+
+    .add-cart:hover {
+      background: #b88a27;
+    }
+
+    /* Newsletter */
+
+    .newsletter {
+      padding: 55px 7%;
+      text-align: center;
+      background: var(--light);
+    }
+
+    .newsletter h2 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .newsletter p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .newsletter form {
+      display: flex;
+      max-width: 440px;
+      margin: 0 auto;
+      gap: 8px;
+    }
+
+    .newsletter input {
+      flex: 1;
+      min-width: 0;
+      padding: 13px 16px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      outline: none;
+    }
+
+    .newsletter input:focus {
+      border-color: #b88a27;
+    }
+
+    .newsletter button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      background: var(--dark);
+      color: white;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 28px 7%;
+      background: #151515;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer p,
+    footer a {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 15px;
+      }
+
+      .benefits {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        background-position: 60% center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 15px 5%;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .logo {
+        font-size: 23px;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        padding: 5px 0;
+      }
+
+      .nav-links a {
+        white-space: nowrap;
+      }
+
+      .nav-actions {
+        gap: 10px;
+      }
+
+      .hero {
+        min-height: 400px;
+        padding: 45px 6%;
+        background-position: 60% center;
+      }
+
+      .hero h1 {
+        font-size: 39px;
+        letter-spacing: -1px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .benefits {
+        padding: 24px 6%;
+        gap: 18px 10px;
+      }
+
+      .benefit {
+        align-items: flex-start;
+      }
+
+      .benefit-icon {
+        font-size: 20px;
+      }
+
+      .benefit h3 {
+        font-size: 12px;
+      }
+
+      .benefit p {
+        font-size: 11px;
+      }
+
+      .products-section {
+        padding: 38px 5%;
+      }
+
+      .section-heading h2 {
+        font-size: 25px;
+      }
+
+      .product-grid {
+        gap: 12px;
+      }
+
+      .product-info {
+        padding: 11px;
+      }
+
+      .product-info h3 {
+        font-size: 13px;
+      }
+
+      .price {
+        font-size: 14px;
+      }
+
+      .add-cart {
+        padding: 8px 10px;
+        font-size: 11px;
+      }
+
+      .newsletter {
+        padding: 40px 5%;
+      }
+
+      .newsletter h2 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="#" class="logo">Shoe<span>Zone</span></a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#">Home</a>
+      <a href="#products">Shop</a>
+      <a href="#products">Men</a>
+      <a href="#products">Women</a>
+      <a href="#products">New Arrivals</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-button" aria-label="Search"
+        onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+        ⌕
+      </button>
+      <button class="icon-button" aria-label="Account">♙</button>
+      <button class="icon-button" aria-label="Shopping cart"
+        onclick="alert('You have ' + cartCount + ' item(s) in your cart.')">
+        ♧ <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Step into comfort</div>
+
+        <h1>Find Your Perfect Pair.</h1>
+
+        <p>
+          Discover footwear that brings together everyday comfort,
+          timeless style, and the confidence to keep moving.
+        </p>
+
+        <a class="primary-button" href="#products">
+          Shop Collection &nbsp; →
+        </a>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Shopping benefits">
+      <div class="benefit">
+        <span class="benefit-icon">♧</span>
+        <div>
+          <h3>Free Shipping</h3>
+          <p>On orders over ₹2,000</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <span class="benefit-icon">↻</span>
+        <div>
+          <h3>Easy Returns</h3>
+          <p>30-day return policy</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <span class="benefit-icon">◇</span>
+        <div>
+          <h3>Secure Checkout</h3>
+          <p>Your privacy matters</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <span class="benefit-icon">♡</span>
+        <div>
+          <h3>Customer Support</h3>
+          <p>Here when you need us</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section" id="products">
+      <div class="section-heading">
+        <h2>Trending Now</h2>
+        <a href="#products">Explore collection →</a>
+      </div>
+
+      <div class="product-grid">
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="tag">BESTSELLER</span>
+            <img
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"
+              alt="Red athletic sneaker"
+              loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3>Velocity Runner</h3>
+            <p class="category">Running Shoes</p>
+            <div class="rating">★★★★★ <span>(124 reviews)</span></div>
+            <div class="product-bottom">
+              <span class="price">₹2,499</span>
+              <button class="add-cart" data-product="Velocity Runner">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="tag">NEW</span>
+            <img
+              src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=80"
+              alt="Stylish casual sneakers"
+              loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3>Urban Classic</h3>
+            <p class="category">Casual Sneakers</p>
+            <div class="rating">★★★★☆ <span>(98 reviews)</span></div>
+            <div class="product-bottom">
+              <span class="price">₹2,999</span>
+              <button class="add-cart" data-product="Urban Classic">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img
+              src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=700&q=80"
+              alt="White everyday sneaker"
+              loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3>Cloud Comfort</h3>
+            <p class="category">Everyday Wear</p>
+            <div class="rating">★★★★★ <span>(76 reviews)</span></div>
+            <div class="product-bottom">
+              <span class="price">₹1,899</span>
+              <button class="add-cart" data-product="Cloud Comfort">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="tag">POPULAR</span>
+            <img
+              src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=700&q=80"
+              alt="Modern sports shoe"
+              loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3>Active Flex</h3>
+            <p class="category">Sports Shoes</p>
+            <div class="rating">★★★★☆ <span>(211 reviews)</span></div>
+            <div class="product-bottom">
+              <span class="price">₹3,499</span>
+              <button class="add-cart" data-product="Active Flex">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <h2>Good Shoes. Good Days.</h2>
+      <p>Sign up for updates on new arrivals and special offers.</p>
+
+      <form id="newsletter-form">
+        <input
+          type="email"
+          placeholder="Enter your email address"
+          aria-label="Email address"
+          required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" class="logo">Shoe<span>Zone</span></a>
+    <p>© 2026 ShoeZone. Student demonstration project.</p>
+    <div class="footer-links">
+      <a href="#products">Shop</a>
+      <a href="#products">Collections</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    let cartCount = 0;
+    const cartDisplay = document.getElementById("cart-count");
+
+    document.querySelectorAll(".add-cart").forEach(button => {
+      button.addEventListener("click", () => {
+        cartCount++;
+        cartDisplay.textContent = cartCount;
+
+        const originalText = button.textContent;
+        button.textContent = "Added ✓";
+
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 1000);
+      });
+    });
+
+    document.getElementById("newsletter-form")
+      .addEventListener("submit", event => {
+        event.preventDefault();
+        alert("Demo only: newsletter signup is not connected to a server.");
+      });
+  </script>
+
+</body>
+</html>
