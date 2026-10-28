@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShoeZone — Curated Footwear</title>
+  <title>ShoeZone — Upgrade Your Kicks</title>
   
-  <!-- Modern Clean Typography -->
+  <!-- Modern Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,47 +15,54 @@
 </head>
 <body>
 
-  <!-- Ambient Glow Effects -->
+  <!-- Ambient Glow Backgrounds -->
   <div class="ambient-glow glow-1"></div>
   <div class="ambient-glow glow-2"></div>
 
-  <!-- Top Navigation -->
+  <!-- Navigation Bar -->
   <nav>
     <div class="brand-logo">Shoe<span>Zone</span></div>
-    <div class="nav-badge">INVENTORY DIRECT // INDIA</div>
   </nav>
 
-  <!-- Hero Header -->
+  <!-- Eye-Catching Hero Section -->
   <header class="hero">
-    <div class="hero-tag">Autonomous Footwear Curation</div>
+    <div class="hero-tag">🔥 Fresh Drops & Everyday Fits</div>
     <h1 class="hero-title">
-      <span class="gradient-text">Curated by Algorithm.</span><br>
-      Styled for the Streets.
+      <span class="gradient-text">Stop Scrolling.</span><br>
+      Step Into Heat.
     </h1>
     <p class="hero-subtitle">
-      Zero clutter, pure silhouettes. Direct live links to verified pairs across Amazon India and Flipkart.
+      Handpicked sneakers and daily kicks ready to ship on Amazon & Flipkart India. Tap any pair to check stock and grab your size instantly.
     </p>
   </header>
 
-  <!-- Controls / Filter Section -->
+  <!-- Search & Category Filters -->
   <section class="controls-wrapper">
-    <div class="search-input-wrapper">
-      <input type="text" id="searchInput" class="search-input" placeholder="Search by model or brand...">
+    <div class="search-box-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Find your next pair (e.g. Jordan, Samba, Pegasus)..." autocomplete="off">
+      <button type="button" id="searchBtn" class="search-btn" aria-label="Search">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span>Search</span>
+      </button>
     </div>
+
     <div class="filter-pills" id="filterContainer">
-      <button class="filter-btn active" data-filter="all">All Models</button>
-      <button class="filter-btn" data-filter="sneaker">Sneakers</button>
-      <button class="filter-btn" data-filter="daily">Daily Wear</button>
-      <button class="filter-btn" data-filter="running">Performance</button>
+      <button class="filter-btn active" data-filter="all">All Drops</button>
+      <button class="filter-btn" data-filter="sneaker">Hype Sneakers</button>
+      <button class="filter-btn" data-filter="daily">Everyday Wear</button>
+      <button class="filter-btn" data-filter="running">Runners</button>
     </div>
   </section>
 
-  <!-- Product Showcase Grid -->
+  <!-- Shoe Showcase Grid -->
   <main class="product-grid" id="productGrid"></main>
 
   <!-- Minimal Footer -->
   <footer>
-    <p>© ShoeZone. Selected products redirect directly to verified listings on Amazon.in and Flipkart.com.</p>
+    <p>© ShoeZone. Tap any card to go straight to official listings on Amazon.in and Flipkart.com.</p>
   </footer>
 
   <!-- External JavaScript -->
